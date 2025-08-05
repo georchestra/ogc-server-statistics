@@ -38,17 +38,3 @@ The following Java VM parameters could be useful:
  * Enable assertions: -ea 
  * Print the loaded values: -Dlog4j.debug
 
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
