@@ -6,52 +6,7 @@ updates:
     interval: weekly
   open-pull-requests-limit: 10
   target-branch: master
-  assignees:
-  - pmauduit
-  ignore:
-  - dependency-name: org.webjars:extjs
-    versions:
-    - "> 4.1.1a"
-- package-ecosystem: gitsubmodule
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-  target-branch: master
-- package-ecosystem: gitsubmodule
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-  target-branch: 24.0.x
-- package-ecosystem: gitsubmodule
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-  target-branch: 25.0.x
 - package-ecosystem: github-actions
   directory: /
   schedule:
     interval: weekly
-- package-ecosystem: docker
-  directory: /ldap
-  schedule:
-    interval: weekly
-- package-ecosystem: docker
-  directory: /postgresql
-  schedule:
-    interval: weekly
-- package-ecosystem: docker
-  directory: /console/src/docker
-  schedule:
-    interval: weekly
-- package-ecosystem: docker
-  directory: /security-proxy/src/docker
-  schedule:
-    interval: weekly
-- package-ecosystem: docker
-  directory: /geowebcache-webapp/src/docker
-  schedule:
-    interval: weekly
-
