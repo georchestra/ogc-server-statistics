@@ -36,7 +36,6 @@ jobs:
     - name: "Publish jar in artifactory"
       run:  mvn deploy -DskipTests
       if: github.actor != 'dependabot[bot]' && github.event_name != 'pull_request'
-      continue-on-error: true
       env:
         ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
         ARTIFACTORY_USERNAME_REF: ${{ secrets.ARTIFACTORY_USERNAME }}
