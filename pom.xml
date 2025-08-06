@@ -5,13 +5,23 @@
     <packaging>jar</packaging>
     <name>ogc-server-statistics</name>
     <groupId>org.georchestra</groupId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <url>http://maven.apache.org</url>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- disable integration tests, use the "it" profile to enable and run them -->
         <skipIT>true</skipIT>
     </properties>
+    <organization>
+        <name>geOrchestra</name>
+    </organization>
+    <distributionManagement>
+        <repository>
+            <id>geOrchestra-artifactory</id>
+            <name>geOrchestra Maven repository</name>
+            <url>https://artifactory.georchestra.org/artifactory/georchestra/</url>
+        </repository>
+    </distributionManagement>
     <build>
         <testResources>
             <testResource>

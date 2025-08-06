@@ -1,0 +1,45 @@
+name: "build"
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    tags:
+      - '*'
+  pull_request:
+
+
+jobs:
+  build:
+    if: "!startsWith(github.event.head_commit.message, '[skip ci] ')"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - name: "Checking out"
+      uses: actions/checkout@v4
+
+    - name: "Setting up Java"
+      uses: actions/setup-java@v4
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+        cache: 'maven'
+
+    - name: "Installing and running tests"
+      run: mvn install -DskipTests
+
+    - name: Getting image tag
+      if: github.repository == 'georchestra/georchestra' && github.actor != 'dependabot[bot]'
+      id: version
+      run: echo "VERSION=$(echo $GITHUB_REF | cut -d / -f 3)" >> $GITHUB_OUTPUT
+
+    - name: "Publish jar in artifactory"
+      run:  mvn deploy -DskipTests
+      if: github.actor != 'dependabot[bot]' && github.event_name != 'pull_request'
+      continue-on-error: true
+      env:
+        ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
+        ARTIFACTORY_USERNAME_REF: ${{ secrets.ARTIFACTORY_USERNAME }}
+
+
+
